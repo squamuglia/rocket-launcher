@@ -64,13 +64,19 @@ def display_launches
 end
 
 def get_next_launches(start, finish)
-  Launch.all[start..finish].each_with_index do |launch, idx|
-    puts "#{idx + 1}. " + launch.name
+  puts "Start: #{start}, Finish: #{finish}"
+  list_number = start + 1
+  Launch.all[start..finish].each do |launch|
+    puts "#{list_number}. " + launch.name
+    list_number += 1
   end
 end
 
 def save_launch
+  puts "Enter your launch number: "
   input = gets.chomp.to_i
+  UserLaunch.create(user_id: @user.id, launch_id: input)
+  binding.pry
 end
 
 def display_user_launches
