@@ -1,6 +1,7 @@
 source "https://rubygems.org"
 
 gem 'json'
+gem 'colorize'
 gem 'sinatra'
 gem 'httparty'
 gem 'activerecord', :require => 'active_record'

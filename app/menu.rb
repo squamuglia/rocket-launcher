@@ -1,7 +1,7 @@
 @user = nil
 
 def menu
-  puts ascii
+  puts ascii.red
   welcome
   prompt = TTY::Prompt.new
   input = prompt.select("Choose an option: ", ["View all launches", "Find a launch", "View your launches", "Exit"])
@@ -23,7 +23,7 @@ end
 
 def user_login
   # needs to have password functionality added
-  puts "Please enter username"
+  puts "Please enter username: "
   username = gets.chomp
   if User.find_by(name: username)
     @user = User.find_by(name: username)
@@ -45,7 +45,7 @@ def create_new_user(username)
 end
 
 def welcome
-  puts "Welcome to the Rocket Launcher"
+  puts "Welcome to the Rocket Launcher \n\n\n\n"
   user_login
   puts "Enter 1 to view all launches, Enter 2 to find a launch, 3 to view your saved launches, 4 to Exit."
 end
