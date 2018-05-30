@@ -17,7 +17,7 @@ def user_login
         tries += 1
       end
     end
-    abort()
+    abort("Out of tries. Goodbye.")
   else
     puts "User does not exist, please create an account"
     puts "Username:"
