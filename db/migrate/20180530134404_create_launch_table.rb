@@ -5,6 +5,7 @@ class CreateLaunchTable < ActiveRecord::Migration[5.2]
       t.integer :status
       t.datetime :isostart
       t.integer :launch_id
+      t.integer :location_id
     end
   end
 end

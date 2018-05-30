@@ -10,13 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_30_134727) do
+ActiveRecord::Schema.define(version: 2018_05_30_210529) do
 
   create_table "launches", force: :cascade do |t|
     t.string "name"
     t.integer "status"
     t.datetime "isostart"
     t.integer "launch_id"
+    t.integer "location_id"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "name"
+    t.float "latitude"
+    t.float "longitude"
+    t.integer "location_id"
+    t.string "country_code"
+  end
+
+  create_table "missions", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "typeName"
+    t.integer "mission_id"
   end
 
   create_table "user_launches", force: :cascade do |t|
