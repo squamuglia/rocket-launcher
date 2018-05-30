@@ -46,7 +46,7 @@ def previous_page(start, finish)
 end
 
 def get_next_launches(start, finish)
-  puts "\nLaunches #{start+1} - #{finish+1}"
+  puts "\n===Launches #{start+1} - #{finish+1}===\n\n"
   list_number = start + 1
   Launch.all[start..finish].each do |launch|
     puts "#{list_number}. #{launch.name} " + "Launch Date: ".green + launch.isostart.to_s.red
