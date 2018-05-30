@@ -50,10 +50,12 @@ def display_launches
   while input < 3 && input >= 0
     input = gets.chomp.to_i
     if input == 1
-      start, finish += 10
+      start += 10
+      finish += 10
       get_next_launches(start, finish)
     elsif input == 2
-      start, finish -= 10
+      start -= 10
+      finish -= 10
       get_next_launches(start, finish)
     else
       save_launch
