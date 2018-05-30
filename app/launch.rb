@@ -8,18 +8,18 @@ end
 
 def display_launch_pagination(start, finish)
   prompt = TTY::Prompt.new
-  input = prompt.select("Navigate the list", ["Next", "Previous", "Save", "Exit"])
-  while input != "Exit"
+  input = prompt.select("Navigate the list", ["Next", "Previous", "Save", "Return to Home"])
+  while input != "Return to Home"
     if input == "Next"
       start, finish = next_page(start, finish)
     elsif input == "Previous"
       start, finish = previous_page(start, finish)
     elsif input == "Save"
       save_launch
-    elsif input == "Exit"
+    elsif input == "Return to Home"
       return
     end
-    input = prompt.select("Navigate the list", ["Next", "Previous", "Save", "Exit"])
+    input = prompt.select("Navigate the list", ["Next", "Previous", "Save", "Return to Home"])
   end
 end
 
