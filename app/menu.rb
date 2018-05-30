@@ -16,6 +16,7 @@ def menu
 end
 
 def user_login
+  # needs to have password functionality added
   puts "Please enter username"
   username = gets.chomp
   if User.find_by(name: username)
@@ -29,6 +30,7 @@ def user_login
 end
 
 def create_new_user(username)
+  # needs to have password functionality added
   @user = User.create(name: username, password: 'password')
 end
 
@@ -39,13 +41,34 @@ def welcome
 end
 
 def display_launches
-  Launch.all[0..9].each do |launch|
-    puts launch.name
+  # currently fetches by the primary key, needs to be updated based on current date
+  start = 0
+  finish = 9
+  input = 0
+  get_next_launches(start, finish)
+  puts "Enter 1 to get more launches, Enter 2 for previous, Enter 3 to save launch"
+  while input < 3 && input >= 0
+    input = gets.chomp.to_i
+    if input == 1
+      start, finish += 10
+      get_next_launches(start, finish)
+    elsif input == 2
+      start, finish -= 10
+      get_next_launches(start, finish)
+    else
+      save_launch
+    end
+  end
+end
+
+def get_next_launches(start, finish)
+  Launch.all[start..finish].each_with_index do |launch, idx|
+    puts "#{idx + 1}. " + launch.name
   end
 end
 
 def save_launch
-
+  input = gets.chomp.to_i
 end
 
 def display_user_launches
