@@ -12,6 +12,8 @@ parsed_response = resp.parsed_response
 
 def launch_seeder(parsed_response)
   parsed_response["launches"].each do |launch|
-    Launch.create(name: launch["name"], status: launch["status"], isostart: launch["isostart"])
+    Launch.create(name: launch["name"], status: launch["status"], isostart: launch["isostart"], launch_id: launch["id"])
   end
 end
+
+launch_seeder(parsed_response)

@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 gem 'json'
 gem 'sinatra'
+gem 'httparty'
 gem 'activerecord', :require => 'active_record'
 gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
 gem 'rake'

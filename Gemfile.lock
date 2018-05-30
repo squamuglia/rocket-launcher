@@ -19,11 +19,14 @@ GEM
     equatable (0.5.0)
     eventmachine (1.2.7)
     hitimes (1.2.6)
+    httparty (0.16.2)
+      multi_xml (>= 0.5.2)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
     json (2.1.0)
     method_source (0.9.0)
     minitest (5.11.3)
+    multi_xml (0.6.0)
     mustermann (1.0.2)
     necromancer (0.4.0)
     pastel (0.7.2)
@@ -78,6 +81,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
+  httparty
   json
   pry
   rake

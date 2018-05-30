@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2018_05_30_134727) do
     t.string "name"
     t.integer "status"
     t.datetime "isostart"
+    t.integer "launch_id"
   end
 
   create_table "user_launches", force: :cascade do |t|
