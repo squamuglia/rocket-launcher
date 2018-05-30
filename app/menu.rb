@@ -24,7 +24,7 @@ end
 def welcome
   puts "Welcome to the Rocket Launcher \n\n\n\n"
   user_login
-  puts "Enter 1 to view all launches, Enter 2 to find a launch, 3 to view your saved launches, 4 to Exit."
+  puts "Enter 1 to view all launches, Enter 2 to find a launch, 3 to view your saved launches, 4 to Exit.\n"
 end
 
 def display_launches
@@ -42,7 +42,7 @@ def display_launches
       get_next_launches(start, finish)
     elsif input == "Previous"
       if start < 10
-        puts "You are at the beginning of the list."
+        puts "You are at the beginning of the list.\n"
       else
         start -= 10
         finish -= 10
@@ -58,7 +58,7 @@ def display_launches
 end
 
 def get_next_launches(start, finish)
-  puts "Start: #{start}, Finish: #{finish}"
+  puts "\nLaunches #{start+1} - #{finish+1}"
   list_number = start + 1
   Launch.all[start..finish].each do |launch|
     puts "#{list_number}. " + launch.name
@@ -74,9 +74,13 @@ def save_launch
 end
 
 def display_user_launches
+  puts "\n===Your Saved Launches===\n\n"
+  ctr = 1
   $user.launches.map do |launch|
-    puts launch.name
+    puts "#{ctr}. " + launch.name
+    ctr+=1
   end
+  puts "\n\n"
 end
 
 def ascii
