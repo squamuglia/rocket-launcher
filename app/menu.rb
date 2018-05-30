@@ -27,62 +27,6 @@ def welcome
   puts "Enter 1 to view all launches, Enter 2 to find a launch, 3 to view your saved launches, 4 to Exit.\n"
 end
 
-def display_launches
-  # currently fetches by the primary key, needs to be updated based on current date
-  start = 0
-  finish = 9
-  input = 0
-  get_next_launches(start, finish)
-  prompt = TTY::Prompt.new
-  input = prompt.select("Navigate the list", ["Next", "Previous", "Save", "Exit"])
-  while input != "Exit"
-    if input == "Next"
-      start += 10
-      finish += 10
-      get_next_launches(start, finish)
-    elsif input == "Previous"
-      if start < 10
-        puts "You are at the beginning of the list.\n"
-      else
-        start -= 10
-        finish -= 10
-        get_next_launches(start, finish)
-      end
-    elsif input == "Save"
-      save_launch
-    elsif input == "Exit"
-      return
-    end
-    input = prompt.select("Navigate the list", ["Next", "Previous", "Save", "Exit"])
-  end
-end
-
-def get_next_launches(start, finish)
-  puts "\nLaunches #{start+1} - #{finish+1}"
-  list_number = start + 1
-  Launch.all[start..finish].each do |launch|
-    puts "#{list_number}. #{launch.name} " + "Launch Date: ".green + launch.isostart.to_s.red
-    list_number += 1
-  end
-end
-
-def save_launch
-  puts "Enter your launch number: "
-  input = gets.chomp.to_i
-  UserLaunch.create(user_id: $user.id, launch_id: input)
-  # binding.pry
-end
-
-def display_user_launches
-  puts "\n===Your Saved Launches===\n\n"
-  list_number = 1
-  $user.launches.map do |launch|
-    puts "#{list_number}. #{launch.name} " + "Launch Date: ".green + launch.isostart.to_s.red
-    list_number+=1
-  end
-  puts "\n\n"
-end
-
 def ascii
   "
                                         _,'/

@@ -8,6 +8,8 @@ Dir[File.join(File.dirname(__FILE__), "../app/models", "*.rb")].each {|f| requir
 require_relative '../app/menu'
 require_relative '../app/rocket_json.rb'
 require_relative '../app/account.rb'
+require_relative '../app/launch.rb'
+
 
 
 connection_details = YAML::load(File.open('config/database.yml'))
