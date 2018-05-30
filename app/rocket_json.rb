@@ -15,6 +15,3 @@ def launch_seeder(parsed_response)
     Launch.create(name: launch["name"], status: launch["status"], isostart: launch["isostart"])
   end
 end
-
-launch_seeder(parsed_response)
-binding.pry
