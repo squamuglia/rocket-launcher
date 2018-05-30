@@ -4,23 +4,21 @@ def menu
   puts ascii
   welcome
   prompt = TTY::Prompt.new
-  input = gets.chomp.to_i
-  while input != 4
-      if input == 1
+  input = prompt.select("Choose an option: ", ["View all launches", "Find a launch", "View your launches", "Exit"])
+  while input != "Exit"
+      if input == "View all launches"
         display_launches
-      elsif input == 2
+      elsif input == "Find a launch"
         find_launch_by_name
-      elsif input == 3
+      elsif input == "View your launches"
         display_user_launches
-      elsif input == 4
-        puts 'Goodbye.'
-        abort()
       else
         puts 'Input not recognized.'
       end
-      puts "Enter 1 to view all launches, Enter 2 to find a launch, 3 to view your saved launches, 4 to Exit"
-      input = gets.chomp.to_i
+      input = prompt.select("Choose an option: ", ["View all launches", "Find a launch","View your launches", "Exit"])
   end
+  puts 'Goodbye.'
+  abort()
 end
 
 def user_login
@@ -58,23 +56,27 @@ def display_launches
   finish = 9
   input = 0
   get_next_launches(start, finish)
-  puts "Enter 1 to get more launches, Enter 2 for previous, Enter 3 to save launch, Enter 4 to Exit."
-  while input != 4
-    input = gets.chomp.to_i
-    if input == 1
+  prompt = TTY::Prompt.new
+  input = prompt.select("Navigate the list", ["Next", "Previous", "Save", "Exit"])
+  while input != "Exit"
+    if input == "Next"
       start += 10
       finish += 10
       get_next_launches(start, finish)
-    elsif input == 2
-      start -= 10
-      finish -= 10
-      get_next_launches(start, finish)
-    elsif input == 3
+    elsif input == "Previous"
+      if start < 10
+        puts "You are at the beginning of the list."
+      else
+        start -= 10
+        finish -= 10
+        get_next_launches(start, finish)
+      end
+    elsif input == "Save"
       save_launch
-    elsif input == 4
+    elsif input == "Exit"
       return
     end
-    puts "Enter 1 to get more launches, Enter 2 for previous, Enter 3 to save launch, Enter 4 to Exit."
+    input = prompt.select("Navigate the list", ["Next", "Previous", "Save", "Exit"])
   end
 end
 
