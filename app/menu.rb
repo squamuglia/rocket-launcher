@@ -1,4 +1,4 @@
-@user = nil
+$user = nil
 
 def menu
   puts ascii.red
@@ -19,29 +19,6 @@ def menu
   end
   puts 'Goodbye.'
   abort()
-end
-
-def user_login
-  # needs to have password functionality added
-  puts "Please enter username: "
-  username = gets.chomp
-  if User.find_by(name: username)
-    @user = User.find_by(name: username)
-  else
-    puts "User does not exist, please create an account"
-    puts "Username:"
-    username = gets.chomp
-    create_new_user(username)
-  end
-end
-
-def create_new_user(username)
-  # needs to have password functionality added
-  if User.find_by(name: username)
-    puts 'Username already exists'
-  else
-    @user = User.create(name: username, password: 'password')
-  end
 end
 
 def welcome
@@ -92,12 +69,12 @@ end
 def save_launch
   puts "Enter your launch number: "
   input = gets.chomp.to_i
-  UserLaunch.create(user_id: @user.id, launch_id: input)
+  UserLaunch.create(user_id: $user.id, launch_id: input)
   # binding.pry
 end
 
 def display_user_launches
-  @user.launches.map do |launch|
+  $user.launches.map do |launch|
     puts launch.name
   end
 end
