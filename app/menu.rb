@@ -61,7 +61,7 @@ def get_next_launches(start, finish)
   puts "\nLaunches #{start+1} - #{finish+1}"
   list_number = start + 1
   Launch.all[start..finish].each do |launch|
-    puts "#{list_number}. " + launch.name
+    puts "#{list_number}. #{launch.name} " + "Launch Date: ".green + launch.isostart.to_s.red
     list_number += 1
   end
 end
@@ -75,10 +75,10 @@ end
 
 def display_user_launches
   puts "\n===Your Saved Launches===\n\n"
-  ctr = 1
+  list_number = 1
   $user.launches.map do |launch|
-    puts "#{ctr}. " + launch.name
-    ctr+=1
+    puts "#{list_number}. #{launch.name} " + "Launch Date: ".green + launch.isostart.to_s.red
+    list_number+=1
   end
   puts "\n\n"
 end
