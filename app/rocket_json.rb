@@ -16,4 +16,4 @@ def launch_seeder(parsed_response)
   end
 end
 
-launch_seeder(parsed_response)
+# launch_seeder(parsed_response)
