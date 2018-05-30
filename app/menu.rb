@@ -1,3 +1,5 @@
+@user = nil
+
 def menu
   welcome
   input = gets.chomp.to_i
@@ -13,9 +15,27 @@ def menu
     end
 end
 
+def user_login
+  puts "Please enter username"
+  username = gets.chomp
+  if User.find_by(name: username)
+    @user = User.find_by(name: username)
+  else
+    puts "User does not exist, please create an account"
+    puts "Username:"
+    username = gets.chomp
+    create_new_user(username)
+  end
+end
+
+def create_new_user(username)
+  @user = User.create(name: username, password: 'password')
+end
+
 def welcome
-puts "Welcome to the Rocket Launcher"
-puts "Enter 1 to view all launches, Enter 2 to find a launch, 3 to view your saved launches, 4 to Exit"
+  puts "Welcome to the Rocket Launcher"
+  user_login
+  puts "Enter 1 to view all launches, Enter 2 to find a launch, 3 to view your saved launches, 4 to Exit"
 end
 
 def display_launches
