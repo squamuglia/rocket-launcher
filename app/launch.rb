@@ -53,20 +53,3 @@ def get_next_launches(start, finish)
     list_number += 1
   end
 end
-
-def save_launch
-  puts "Enter your launch number: "
-  input = gets.chomp.to_i
-  UserLaunch.create(user_id: $user.id, launch_id: input)
-end
-
-def display_user_launches
-  puts "\n===Your Saved Launches===\n\n"
-  list_number = 1
-  $user.reload
-  $user.launches.map do |launch|
-    puts "#{list_number}. #{launch.name} " + "Launch Date: ".green + launch.isostart.to_s.red
-    list_number+=1
-  end
-  puts "\n\n"
-end

@@ -70,8 +70,3 @@ def display_launch(launch)
   puts "Launch Location: " + launch.location.name + "\n\n"
   launch.missions.each {|mission| puts "Mission Type: " + mission.typeName + "\nMission Description: " + mission.description + "\n\n"}
 end
-
-
-Location.all.map { |location| location.name }.uniq
-
-Location.all.map { |location| location.country_code }.uniq
