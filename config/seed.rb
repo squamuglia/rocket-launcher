@@ -2,10 +2,10 @@ require 'json'
 require 'httparty'
 require 'pry'
 # require 'sinatra/activerecord'
-require_relative 'models/launch.rb'
-require_relative 'models/mission.rb'
-require_relative 'models/location.rb'
-require_relative 'models/user.rb'
+require_relative '../app/models/launch.rb'
+require_relative '../app/models/mission.rb'
+require_relative '../app/models/location.rb'
+require_relative '../app/models/user.rb'
 
 User.create(name: 'max', password: 'password')
 User.create(name: 'john', password: 'password')
