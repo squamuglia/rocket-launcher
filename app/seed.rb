@@ -10,6 +10,7 @@ require_relative 'models/user.rb'
 User.create(name: 'max', password: 'password')
 User.create(name: 'john', password: 'password')
 Launch.create(name: "test", status: 1, isostart: "20150820T201000Z", launch_id: 0000, location_id: 0000)
+Mission.create(name: "test", description: "test mission", typeName: "Communications", mission_id: 0000, launch_id: 0000)
 
 url = 'https://launchlibrary.net/1.4/launch/next/10000'
 resp = HTTParty.get(url)
