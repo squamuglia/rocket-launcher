@@ -5,9 +5,9 @@ def launch_display_menu
       if input == "Filter by Mission Type"
         filter_by_mission
       elsif input == "Filter by Location"
-        find_launch_by_name
+        filter_by_location
       elsif input == "Filter by Country"
-        display_user_launches
+        filter_by_country
       else
         puts 'Input not recognized.'
       end
@@ -17,7 +17,7 @@ end
 
 
 def filter_by_mission
-  mission_types = Mission.all.map { |mission| mission.typeName }.uniq << "Exit"
+  mission_types = Mission.all.map { |mission| mission.typeName }.uniq.unshift("Exit")
   # mission_types << "Exit"
   prompt = TTY::Prompt.new
   input = prompt.select("Choose an option: ", mission_types)
@@ -30,15 +30,25 @@ def filter_by_mission
 end
 
 def filter_by_location
-
+  locations = Location.all.map { |location| location.name }.uniq.unshift("Exit")
+  # mission_types << "Exit"
+  prompt = TTY::Prompt.new
+  input = prompt.select("Choose an option: ", locations)
+  if input == "Exit"
+  else
+    filtered_locations = Launch.all.select {|launch| launch.location.name == input}
+    filtered_locations.map! {|launch| launch.name}
+    display_filtered_launches(filtered_locations)
+  end
 end
 
 def filter_by_country
 
 end
 
-def display_filtered_launches
-
+def display_filtered_launches(filtered_missions)
+  prompt = TTY::Prompt.new
+  input = prompt.select("Choose a mission: ", filtered_missions.unshift("Exit"))
 end
 
 
