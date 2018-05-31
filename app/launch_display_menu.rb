@@ -75,6 +75,6 @@ def display_launch(launch)
   elsif input == "Watch Countdown"
     countdown(launch)
   elsif input == "Save"
-    # save launch 
+    save_launch(launch)
   end
 end

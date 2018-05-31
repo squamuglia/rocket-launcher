@@ -24,7 +24,6 @@ end
 def welcome
   puts "Welcome to the Rocket Launcher \n\n\n\n"
   user_login
-  puts "Enter 1 to view all launches, Enter 2 to find a launch, 3 to view your saved launches, 4 to Exit.\n"
 end
 
 def ascii

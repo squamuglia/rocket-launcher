@@ -8,18 +8,20 @@ end
 
 def display_launch_pagination(start, finish)
   prompt = TTY::Prompt.new
-  input = prompt.select("Navigate the list", ["Next", "Previous", "Save", "Return to Home"])
+  input = prompt.select("Navigate the list", ["Next", "Previous", "View Launch Details", "Return to Home"])
   while input != "Return to Home"
     if input == "Next"
       start, finish = next_page(start, finish)
     elsif input == "Previous"
       start, finish = previous_page(start, finish)
-    elsif input == "Save"
-      save_launch
+    elsif input == "View Launch Details"
+      puts "Enter your launch number: "
+      input = gets.chomp.to_i
+      display_launch(Launch.find(input))
     elsif input == "Return to Home"
       return
     end
-    input = prompt.select("Navigate the list", ["Next", "Previous", "Save", "Return to Home"])
+    input = prompt.select("Navigate the list", ["Next", "Previous", "View Launch Details", "Return to Home"])
   end
 end
 
@@ -47,9 +49,7 @@ end
 
 def get_next_launches(start, finish)
   puts "\n===Launches #{start+1} - #{finish+1}===\n\n"
-  list_number = start + 1
   Launch.all[start..finish].each do |launch|
-    puts "#{list_number}. #{launch.name} " + "Launch Date: ".green + launch.isostart.to_s.red
-    list_number += 1
+    puts "ID: #{launch.id}. #{launch.name} " + "Launch Date: ".green + launch.isostart.to_s.red
   end
 end

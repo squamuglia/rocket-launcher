@@ -1,8 +1,6 @@
 
-def save_launch
-  puts "Enter your launch number: "
-  input = gets.chomp.to_i
-  UserLaunch.create(user_id: $user.id, launch_id: input)
+def save_launch(launch)
+  UserLaunch.create(user_id: $user.id, launch_id: launch.id)
 end
 
 def display_user_launches
@@ -11,7 +9,7 @@ def display_user_launches
   saved_launches = $user.launches.map do |launch|
     launch.name
   end
-  saved_launches.unshift("Exit")
+  saved_launches.unshift("Return to Home")
   prompt = TTY::Prompt.new
   input = prompt.select("Select a launch to view more information: ", saved_launches)
   if input == "Return to Home"
