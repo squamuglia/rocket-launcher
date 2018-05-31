@@ -58,6 +58,17 @@ end
 def display_filtered_launches(filtered_missions)
   prompt = TTY::Prompt.new
   input = prompt.select("Choose a mission: ", filtered_missions.unshift("Exit"))
+  if input == "Exit"
+  else
+    display_launch(Launch.find_by(name: input))
+  end
+end
+
+def display_launch(launch)
+  puts launch.name + "Launch Date: ".green + launch.isostart.to_s.red
+  puts "Launch Location: " + launch.location.name
+  launch.missions.each {|mission| puts "Mission Type: " + mission.typeName + "\nMission Description: " + mission.description}
+
 end
 
 
