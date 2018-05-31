@@ -1,6 +1,6 @@
 def launch_display_menu
   prompt = TTY::Prompt.new
-  input = prompt.select("Choose an option: ", ["Filter by Mission Type", "Filter by Location", "Filter by Country", "Exit"])
+  input = prompt.select("Choose an option: ", ["Filter by Mission Type", "Filter by Location", "Filter by Country", "Find Closest Launch", "Exit"])
   while input != "Exit"
       if input == "Filter by Mission Type"
         filter_by_mission
@@ -8,10 +8,12 @@ def launch_display_menu
         filter_by_location
       elsif input == "Filter by Country"
         filter_by_country
+      elsif input == "Find Closest Launch"
+        display_closest_launch
       else
         puts 'Input not recognized.'
       end
-      input = prompt.select("Choose an option: ", ["Filter by Mission Type", "Filter by Location", "Filter by Country", "Exit"])
+      input = prompt.select("Choose an option: ", ["Filter by Mission Type", "Filter by Location", "Filter by Country", "Find Closest Launch", "Exit"])
   end
 end
 
@@ -60,6 +62,11 @@ def display_filtered_launches(filtered_missions)
   else
     display_launch(Launch.find_by(name: input))
   end
+end
+
+def display_closest_launch
+  get_location
+  display_launch(compare_pad_distances)
 end
 
 def display_launch(launch)

@@ -13,3 +13,5 @@ gem 'thin'
 gem 'shotgun'
 gem 'pry'
 gem 'tty-prompt'
+gem "rest-client"
+gem 'haversine'
