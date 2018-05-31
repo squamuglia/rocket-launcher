@@ -5,10 +5,13 @@ require 'pry'
 require_relative 'models/launch.rb'
 require_relative 'models/mission.rb'
 require_relative 'models/location.rb'
+require_relative 'models/user.rb'
 
+User.create(name: 'max', password: 'password')
+User.create(name: 'john', password: 'password')
+Launch.create(name: "test", status: 1, isostart: "20150820T201000Z", launch_id: 0000, location_id: 0000)
 
-
-url = 'https://launchlibrary.net/1.4/launch/next/100'
+url = 'https://launchlibrary.net/1.4/launch/next/10000'
 resp = HTTParty.get(url)
 parsed_response = resp.parsed_response
 

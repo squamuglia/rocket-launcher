@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 2018_05_30_210529) do
     t.datetime "isostart"
     t.integer "launch_id"
     t.integer "location_id"
-    t.integer "mission_id"
   end
 
   create_table "locations", force: :cascade do |t|

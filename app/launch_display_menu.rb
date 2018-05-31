@@ -69,4 +69,12 @@ def display_launch(launch)
   puts "Countdown to Launch: #{static_countdown(launch)}"
   puts "Launch Location: " + launch.location.name + "\n\n"
   launch.missions.each {|mission| puts "Mission Type: " + mission.typeName + "\nMission Description: " + mission.description + "\n\n"}
+  prompt = TTY::Prompt.new
+  input = prompt.select("Select an option: ", ["Return to Home", "Watch Countdown", "Save"])
+  if input == "Return to Home"
+  elsif input == "Watch Countdown"
+    countdown(launch)
+  elsif input == "Save"
+    # save launch 
+  end
 end
