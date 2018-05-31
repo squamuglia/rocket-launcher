@@ -43,7 +43,16 @@ def filter_by_location
 end
 
 def filter_by_country
-
+  countries = Location.all.map { |location| location.country_code }.uniq.unshift("Exit")
+  # mission_types << "Exit"
+  prompt = TTY::Prompt.new
+  input = prompt.select("Choose an option: ", countries)
+  if input == "Exit"
+  else
+    filtered_countries = Launch.all.select {|launch| launch.location.country_code == input}
+    filtered_countries.map! {|launch| launch.name}
+    display_filtered_launches(filtered_countries)
+  end
 end
 
 def display_filtered_launches(filtered_missions)
