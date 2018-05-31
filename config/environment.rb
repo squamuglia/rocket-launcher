@@ -8,6 +8,7 @@ Dir[File.join(File.dirname(__FILE__), "../app/models", "*.rb")].each {|f| requir
 require_relative '../app/menu'
 require_relative '../app/account.rb'
 require_relative '../app/launch.rb'
+require_relative '../app/launch_display_menu.rb'
 
 
 

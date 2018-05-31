@@ -9,7 +9,7 @@ def menu
       if input == "View all launches"
         display_launches
       elsif input == "Find a launch"
-        find_launch_by_name
+        launch_display_menu
       elsif input == "View your launches"
         display_user_launches
       else
