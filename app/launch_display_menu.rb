@@ -15,12 +15,14 @@ def launch_display_menu
   end
 end
 
+def choose_option_menu(options)
+  prompt = TTY::Prompt.new
+  prompt.select("Choose an option: ", options)
+end
 
 def filter_by_mission
   mission_types = Mission.all.map { |mission| mission.typeName }.uniq.unshift("Exit")
-  # mission_types << "Exit"
-  prompt = TTY::Prompt.new
-  input = prompt.select("Choose an option: ", mission_types)
+  input = choose_option_menu(mission_types)
   if input == "Exit"
   else
     filtered_missions = Mission.all.select {|mission| mission.typeName == input}
@@ -31,9 +33,7 @@ end
 
 def filter_by_location
   locations = Location.all.map { |location| location.name }.uniq.unshift("Exit")
-  # mission_types << "Exit"
-  prompt = TTY::Prompt.new
-  input = prompt.select("Choose an option: ", locations)
+  input = choose_option_menu(locations)
   if input == "Exit"
   else
     filtered_locations = Launch.all.select {|launch| launch.location.name == input}
@@ -44,9 +44,7 @@ end
 
 def filter_by_country
   countries = Location.all.map { |location| location.country_code }.uniq.unshift("Exit")
-  # mission_types << "Exit"
-  prompt = TTY::Prompt.new
-  input = prompt.select("Choose an option: ", countries)
+  input = choose_option_menu(countries)
   if input == "Exit"
   else
     filtered_countries = Launch.all.select {|launch| launch.location.country_code == input}
@@ -57,7 +55,7 @@ end
 
 def display_filtered_launches(filtered_missions)
   prompt = TTY::Prompt.new
-  input = prompt.select("Choose a mission: ", filtered_missions.unshift("Exit"))
+  input = prompt.select("Choose a launch: ", filtered_missions.unshift("Exit"))
   if input == "Exit"
   else
     display_launch(Launch.find_by(name: input))
