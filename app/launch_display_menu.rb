@@ -65,10 +65,10 @@ def display_filtered_launches(filtered_missions)
 end
 
 def display_launch(launch)
-  puts launch.name + "Launch Date: ".green + launch.isostart.to_s.red
-  puts "Launch Location: " + launch.location.name
-  launch.missions.each {|mission| puts "Mission Type: " + mission.typeName + "\nMission Description: " + mission.description}
-
+  puts launch.name + " Launch Date: ".green + launch.isostart.to_s.red
+  puts "Countdown to Launch: #{static_countdown(launch)}"
+  puts "Launch Location: " + launch.location.name + "\n\n"
+  launch.missions.each {|mission| puts "Mission Type: " + mission.typeName + "\nMission Description: " + mission.description + "\n\n"}
 end
 
 
