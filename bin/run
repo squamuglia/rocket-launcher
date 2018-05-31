@@ -1,5 +1,5 @@
 require_relative '../config/environment'
 
-
+refresh_database
 pid = fork{ exec "afplay", "app/launch.mp3" }
 menu
