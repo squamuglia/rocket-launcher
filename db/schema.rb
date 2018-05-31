@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2018_05_30_210529) do
     t.datetime "isostart"
     t.integer "launch_id"
     t.integer "location_id"
+    t.integer "mission_id"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -33,6 +34,7 @@ ActiveRecord::Schema.define(version: 2018_05_30_210529) do
     t.string "description"
     t.string "typeName"
     t.integer "mission_id"
+    t.integer "launch_id"
   end
 
   create_table "user_launches", force: :cascade do |t|

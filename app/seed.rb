@@ -14,13 +14,14 @@ parsed_response = resp.parsed_response
 
 def launch_seeder(parsed_response)
   parsed_response["launches"].each do |launch|
-    Launch.create(name: launch["name"], status: launch["status"], isostart: launch["isostart"], launch_id: launch["id"])
+    new_location = Location.create(name: launch["location"]["name"], latitude: launch["location"]["pads"][0]["latitude"], longitude: launch["location"]["pads"][0]["longitude"], country_code: launch["location"]["countryCode"], location_id: launch["location"]["id"])
+
+    new_launch = Launch.create(name: launch["name"], status: launch["status"], isostart: launch["isostart"], launch_id: launch["id"], location_id: new_location.id)
 
     launch["missions"].each do |mission|
-      Mission.create(name: mission["name"], description: mission["description"], typeName: mission["typeName"], mission_id: mission["id"])
+      Mission.create(name: mission["name"], description: mission["description"], typeName: mission["typeName"], mission_id: mission["id"], launch_id: new_launch.id)
     end
 
-    Location.create(name: launch["location"]["name"], latitude: launch["location"]["pads"][0]["latitude"], longitude: launch["location"]["pads"][0]["longitude"], country_code: launch["location"]["country_code"], location_id: launch["location"]["id"])
   end
 end
 

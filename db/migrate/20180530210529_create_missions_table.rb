@@ -5,6 +5,7 @@ class CreateMissionsTable < ActiveRecord::Migration[5.2]
       t.string :description
       t.string :typeName
       t.integer :mission_id
+      t.integer :launch_id
     end
   end
 end
