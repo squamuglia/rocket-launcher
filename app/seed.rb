@@ -3,6 +3,8 @@ require 'httparty'
 require 'pry'
 # require 'sinatra/activerecord'
 require_relative 'models/launch.rb'
+require_relative 'models/mission.rb'
+require_relative 'models/location.rb'
 
 
 

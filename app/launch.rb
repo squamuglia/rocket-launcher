@@ -63,6 +63,7 @@ end
 def display_user_launches
   puts "\n===Your Saved Launches===\n\n"
   list_number = 1
+  $user.reload
   $user.launches.map do |launch|
     puts "#{list_number}. #{launch.name} " + "Launch Date: ".green + launch.isostart.to_s.red
     list_number+=1
