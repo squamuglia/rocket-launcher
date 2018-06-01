@@ -13,4 +13,4 @@ Clone the repository to your local machine, navigate to the project folder in te
 Contributions to this app are welcomed. Please feel free to open a pull request with any contributions you would like to make. 
 
 <h3>LICENSE:</h3>
-# license goes here
+This application uses the <a href="https://github.com/squamuglia/rocket-launcher/blob/master/LICENSE">MIT License</a>. 
