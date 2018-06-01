@@ -6,6 +6,13 @@ Welcome to the Rocket Launcher CLI App!
 <h3>DESCRIPTION:</h3>
 This app tracks all currently-known upcoming rocket launches. Launch information is obtained from the <a href="http://launchlibrary.net/docs/1.4/api.html">Launch Library API</a>. Rocket Launcher allows users to view a list of all upcoming launches, including the launch date, mission information (if available), and the launch location. Users are also able to filter upcoming launches based on launch location, mission type, or country of origin, and may save launches for easy review on future logins. 
 
+<h3>Demos</h3>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/U3GQNLzGAfg?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qnABVnleAnw?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2L9Fmgnn2YA?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/mCOnXz5jmms?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
 <h3>INSTALLATION:</h3>
 Clone the repository to your local machine, navigate to the project folder in terminal, and run 'ruby bin/run' in the command line. 
 
