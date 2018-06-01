@@ -8,8 +8,8 @@ Welcome to the Rocket Launcher CLI App!
 
 Watch some demos:
 <ul>
-<li><a href="https://youtu.be/mCOnXz5jmms">Making a New Account</a></li>
-<li><a href="https://youtu.be/2L9Fmgnn2YA">Viewing all of the Launches and Saving</a></li>
+<li><a href="https://youtu.be/2L9Fmgnn2YA">Viewing all of the Launches and Details</a></li>
+<li><a href="https://youtu.be/mCOnXz5jmms">Making a New Account and Saving Launches</a></li>
 <li><a href="https://youtu.be/qnABVnleAnw">Filtering Launches</a></li>
 <li><a href="https://youtu.be/U3GQNLzGAfg">Finding the Most Popular Launch Pads</a></li>
 </ul>
