@@ -15,3 +15,5 @@ gem 'pry'
 gem 'tty-prompt'
 gem "rest-client"
 gem 'haversine'
+gem 'tty-progressbar'
+gem 'pastel'

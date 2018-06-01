@@ -52,4 +52,5 @@ def get_next_launches(start, finish)
   Launch.all[start..finish].each do |launch|
     puts "ID: #{launch.id}. #{launch.name} " + "Launch Date: ".green + launch.isostart.to_s.red
   end
+  puts "\n\n"
 end

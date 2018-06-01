@@ -75,6 +75,9 @@ GEM
       hitimes
     tty-color (0.4.2)
     tty-cursor (0.5.0)
+    tty-progressbar (0.14.0)
+      tty-cursor (~> 0.5.0)
+      tty-screen (~> 0.6.4)
     tty-prompt (0.16.1)
       necromancer (~> 0.4.0)
       pastel (~> 0.7.0)
@@ -102,6 +105,7 @@ DEPENDENCIES
   haversine
   httparty
   json
+  pastel
   pry
   rake
   require_all
@@ -111,6 +115,7 @@ DEPENDENCIES
   sinatra-activerecord
   sqlite3
   thin
+  tty-progressbar
   tty-prompt
 
 BUNDLED WITH

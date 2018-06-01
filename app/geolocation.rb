@@ -1,7 +1,7 @@
 require 'rest-client'
 require 'json'
 require_relative '../config/environment.rb'
-
+require 'pastel'
 
 @current_location = {}
 
@@ -23,6 +23,10 @@ end
 def compare_pad_distances
   closest_launch = Launch.first
   closest_dist = 100000
+  pastel = Pastel.new
+  green = pastel.on_green(" ")
+  red = pastel.on_red(" ")
+  bar = TTY::ProgressBar.new("Scanning Launches :bar", total: Launch.all.length, complete: green, incomplete: red)
   Launch.all.each do |launch|
     from_lat = current_latitude
     from_lon = current_longitude
@@ -33,9 +37,7 @@ def compare_pad_distances
           closest_launch = launch
           closest_dist = dist
         end
+      bar.advance(1)
   end
   closest_launch
 end
-
-get_location
-compare_pad_distances

@@ -25,7 +25,7 @@ end
 
 def countdown(launch)
   puts "Press q to end timer"
-  l = Launch.first.isostart
+  l = launch.isostart
   while Time.now.utc < l
     c = char_if_pressed
     time = l - Time.now.utc

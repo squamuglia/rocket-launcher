@@ -1,7 +1,7 @@
 def launch_display_menu
   prompt = TTY::Prompt.new
-  input = prompt.select("Choose an option: ", ["Filter by Mission Type", "Filter by Location", "Filter by Country", "Find Closest Launch", "Exit"])
-  while input != "Exit"
+  input = prompt.select("Choose an option: ", ["Filter by Mission Type", "Filter by Location", "Filter by Country", "Find Closest Launch", "Return to Home"])
+  while input != "Return to Home"
       if input == "Filter by Mission Type"
         filter_by_mission
       elsif input == "Filter by Location"
@@ -13,7 +13,7 @@ def launch_display_menu
       else
         puts 'Input not recognized.'
       end
-      input = prompt.select("Choose an option: ", ["Filter by Mission Type", "Filter by Location", "Filter by Country", "Find Closest Launch", "Exit"])
+      input = prompt.select("Choose an option: ", ["Filter by Mission Type", "Filter by Location", "Filter by Country", "Find Closest Launch", "Return to Home"])
   end
 end
 
@@ -23,9 +23,9 @@ def choose_option_menu(options)
 end
 
 def filter_by_mission
-  mission_types = Mission.all.map { |mission| mission.typeName }.uniq.unshift("Exit")
+  mission_types = Mission.all.map { |mission| mission.typeName }.uniq.unshift("Return to Home")
   input = choose_option_menu(mission_types)
-  if input == "Exit"
+  if input == "Return to Home"
   else
     filtered_missions = Mission.all.select {|mission| mission.typeName == input}
     filtered_missions.map! {|mission| mission.launch.name}
@@ -34,9 +34,9 @@ def filter_by_mission
 end
 
 def filter_by_location
-  locations = Location.all.map { |location| location.name }.uniq.unshift("Exit")
+  locations = Location.all.map { |location| location.name }.uniq.unshift("Return to Home")
   input = choose_option_menu(locations)
-  if input == "Exit"
+  if input == "Return to Home"
   else
     filtered_locations = Launch.all.select {|launch| launch.location.name == input}
     filtered_locations.map! {|launch| launch.name}
@@ -45,9 +45,9 @@ def filter_by_location
 end
 
 def filter_by_country
-  countries = Location.all.map { |location| location.country_code }.uniq.unshift("Exit")
+  countries = Location.all.map { |location| location.country_code }.uniq.unshift("Return to Home")
   input = choose_option_menu(countries)
-  if input == "Exit"
+  if input == "Return to Home"
   else
     filtered_countries = Launch.all.select {|launch| launch.location.country_code == input}
     filtered_countries.map! {|launch| launch.name}
@@ -57,8 +57,8 @@ end
 
 def display_filtered_launches(filtered_missions)
   prompt = TTY::Prompt.new
-  input = prompt.select("Choose a launch: ", filtered_missions.unshift("Exit"))
-  if input == "Exit"
+  input = prompt.select("Choose a launch: ", filtered_missions.unshift("Return to Home"))
+  if input == "Return to Home"
   else
     display_launch(Launch.find_by(name: input))
   end
@@ -70,7 +70,7 @@ def display_closest_launch
 end
 
 def display_launch(launch)
-  puts launch.name + " Launch Date: ".green + launch.isostart.to_s.red
+  puts "\n\n" + launch.name + " Launch Date: ".green + launch.isostart.to_s.red
   puts "Countdown to Launch: #{static_countdown(launch)}"
   puts "Launch Location: " + launch.location.name + "\n\n"
   launch.missions.each {|mission| puts "Mission Type: " + mission.typeName + "\nMission Description: " + mission.description + "\n\n"}
