@@ -3,6 +3,7 @@ class Location < ActiveRecord::Base
 
   def self.launches_by_location
     sorted_locations = Location.all.sort {|location1, location2| location2.launches.count <=> location1.launches.count}.each {|location| puts "Location: #{location.name}. Number of Upcoming Launches: #{location.launches.count}"}
+    puts "\n\n"
   end
 
   def self.find_or_create_by_launch_id(launch)
