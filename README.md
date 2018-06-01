@@ -6,6 +6,7 @@ Welcome to the Rocket Launcher CLI App!
 <h3>DESCRIPTION:</h3>
 This app tracks all currently-known upcoming rocket launches. Launch information is obtained from the <a href="http://launchlibrary.net/docs/1.4/api.html">Launch Library API</a>. Rocket Launcher allows users to view a list of all upcoming launches, including the launch date, mission information (if available), and the launch location. Users are also able to filter upcoming launches based on launch location, mission type, or country of origin, and may save launches for easy review on future logins. 
 
+
 Watch some demos:
 <ul>
 <li><a href="https://youtu.be/mCOnXz5jmms">Making a New Account</a></li>
