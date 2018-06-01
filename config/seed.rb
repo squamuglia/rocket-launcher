@@ -18,8 +18,8 @@ parsed_response = resp.parsed_response
 
 def launch_seeder(parsed_response)
   parsed_response["launches"].each do |launch|
-    new_location = Location.create(name: launch["location"]["name"], latitude: launch["location"]["pads"][0]["latitude"], longitude: launch["location"]["pads"][0]["longitude"], country_code: launch["location"]["countryCode"], location_id: launch["location"]["id"])
 
+    new_location = Location.find_or_create_by_launch_id(launch)
     new_launch = Launch.create(name: launch["name"], status: launch["status"], isostart: launch["isostart"], launch_id: launch["id"], location_id: new_location.id)
 
     launch["missions"].each do |mission|

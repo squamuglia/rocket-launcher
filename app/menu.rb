@@ -4,7 +4,7 @@ def menu
   puts ascii.red
   welcome
   prompt = TTY::Prompt.new
-  input = prompt.select("Choose an option: ", ["View all launches", "Find a launch", "View your launches", "Exit"])
+  input = prompt.select("Choose an option: ", ["View all launches", "Find a launch", "View your launches", "View most used launch sites", "Exit"])
   while input != "Exit"
       if input == "View all launches"
         display_launches
@@ -12,10 +12,12 @@ def menu
         launch_display_menu
       elsif input == "View your launches"
         display_user_launches
+      elsif input == "View most popular launch sites"
+        Location.launches_by_location
       else
         puts 'Input not recognized.'
       end
-      input = prompt.select("Choose an option: ", ["View all launches", "Find a launch","View your launches", "Exit"])
+      input = prompt.select("Choose an option: ", ["View all launches", "Find a launch","View your launches", "View most used launch sites", "Exit"])
   end
   puts 'Goodbye.'
   abort()
